@@ -10,9 +10,9 @@ public class Course {
     @Id
     private String Id;
     private String name;
-    private Integer calories;
-    private Integer fats;
-    private Integer protein;
-    private Integer carbs;
+    private Double calories;
+    private Double fats;
+    private Double protein;
+    private Double carbs;
     private CourseType type;
 }

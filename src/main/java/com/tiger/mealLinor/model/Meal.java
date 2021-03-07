@@ -23,10 +23,10 @@ public class Meal {
     private Course snack2;
     @DBRef
     private Course supper;
-    private Integer calories;
-    private Integer fats;
-    private Integer protein;
-    private Integer carbs;
+    private Double calories;
+    private Double fats;
+    private Double protein;
+    private Double carbs;
 
     public Meal(Course breakfast, Course snack, Course dinner, Course snack2, Course supper) {
         this.breakfast = breakfast;
@@ -35,9 +35,9 @@ public class Meal {
         this.snack2 = snack2;
         this.supper = supper;
         List<Course> courses = Arrays.asList(breakfast, snack, dinner, snack2, supper);
-        this.calories = courses.stream().mapToInt(Course::getCalories).sum();
-        this.fats = courses.stream().mapToInt(Course::getFats).sum();
-        this.protein = courses.stream().mapToInt(Course::getProtein).sum();
-        this.carbs = courses.stream().mapToInt(Course::getCarbs).sum();
+        this.calories = courses.stream().mapToDouble(Course::getCalories).sum();
+        this.fats = courses.stream().mapToDouble(Course::getFats).sum();
+        this.protein = courses.stream().mapToDouble(Course::getProtein).sum();
+        this.carbs = courses.stream().mapToDouble(Course::getCarbs).sum();
     }
 }
