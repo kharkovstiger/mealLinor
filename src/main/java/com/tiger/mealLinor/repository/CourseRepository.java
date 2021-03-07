@@ -7,4 +7,8 @@ import java.util.List;
 
 public interface CourseRepository {
     List<Course> findCoursesByType(CourseType type);
+
+    List<Course> findAll();
+
+    Course save(Course course);
 }

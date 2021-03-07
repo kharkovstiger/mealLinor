@@ -21,4 +21,14 @@ public class DefaultCourseRepository implements CourseRepository {
     public List<Course> findCoursesByType(CourseType type) {
         return crudCourseRepository.findByType(type);
     }
+
+    @Override
+    public List<Course> findAll() {
+        return crudCourseRepository.findAll();
+    }
+
+    @Override
+    public Course save(Course course) {
+        return crudCourseRepository.save(course);
+    }
 }
