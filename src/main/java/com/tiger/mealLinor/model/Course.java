@@ -15,4 +15,5 @@ public class Course {
     private Double protein;
     private Double carbs;
     private CourseType type;
+    private String recipe;
 }
