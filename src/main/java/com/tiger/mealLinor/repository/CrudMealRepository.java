@@ -17,5 +17,5 @@ public interface CrudMealRepository extends MongoRepository<Meal, String> {
     @Query(value = "{}")
     List<Meal> find(Double calories, Double protein, Double fats, Double carbs);
 
-    List<Meal> findByCaloriesGreaterThanAndLessThanAndProteinGreaterThanAndLessThanAndFatsGreaterThanAndLessThanAndCarbsGreaterThanAndLessThan(Double caloriesMin, Double caloriesMax, Double proteinMin, Double proteinMax, Double fatsMin, Double fatsMax, Double carbsMin, Double carbsMax);
+    List<Meal> findByCaloriesBetweenAndProteinBetweenAndFatsBetweenAndCarbsBetween(Double caloriesMin, Double caloriesMax, Double proteinMin, Double proteinMax, Double fatsMin, Double fatsMax, Double carbsMin, Double carbsMax);
 }
