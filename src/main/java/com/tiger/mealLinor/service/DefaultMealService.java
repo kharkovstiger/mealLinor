@@ -1,5 +1,6 @@
 package com.tiger.mealLinor.service;
 
+import com.tiger.mealLinor.model.Characteristics;
 import com.tiger.mealLinor.model.Course;
 import com.tiger.mealLinor.model.CourseType;
 import com.tiger.mealLinor.model.Meal;
@@ -38,5 +39,10 @@ public class DefaultMealService implements MealService{
     @Override
     public List<Meal> getAllMeals() {
         return mealRepository.findAll();
+    }
+
+    @Override
+    public List<Meal> getMeals(Characteristics characteristics) {
+        return mealRepository.find(characteristics.getCalories(), characteristics.getProtein(), characteristics.getFats(), characteristics.getCarbs());
     }
 }

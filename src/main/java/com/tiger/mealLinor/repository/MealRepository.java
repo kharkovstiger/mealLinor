@@ -8,4 +8,6 @@ public interface MealRepository {
     void saveMeal(Meal meal);
 
     List<Meal> findAll();
+
+    List<Meal> find(Double calories, Double protein, Double fats, Double carbs);
 }
