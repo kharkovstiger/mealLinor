@@ -9,6 +9,7 @@ import com.tiger.mealLinor.repository.MealRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -43,6 +44,13 @@ public class DefaultMealService implements MealService{
 
     @Override
     public List<Meal> getMeals(Characteristics characteristics) {
-        return mealRepository.find(characteristics.getCalories(), characteristics.getProtein(), characteristics.getFats(), characteristics.getCarbs());
+        List<Meal> meals = new ArrayList<>();
+        double c = 0;
+        while (meals.size() < 3) {
+            c += 0.01;
+            meals = mealRepository.find(characteristics.getCalories(), characteristics.getProtein(), characteristics.getFats(),
+                    characteristics.getCarbs(), 0.05 + c*0.01);
+        }
+        return meals;
     }
 }
