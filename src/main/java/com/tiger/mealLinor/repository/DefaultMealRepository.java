@@ -28,6 +28,6 @@ public class DefaultMealRepository implements MealRepository{
 
     @Override
     public List<Meal> find(Double calories, Double protein, Double fats, Double carbs) {
-        return crudMealRepository.findByCaloriesBetweenAndProteinBetweenAndFatsBetweenAndCarbsBetween(calories*0.9, calories*1.1, protein*0.9, protein*1.1, fats*0.9, fats*1.1, carbs*0.9, carbs*1.1);
+        return crudMealRepository.findByCaloriesBetweenAndProteinBetweenAndFatsBetweenAndCarbsBetween(calories*0.95, calories*1.05, protein*0.95, protein*1.05, fats*0.95, fats*1.05, carbs*0.95, carbs*1.05);
     }
 }
