@@ -46,11 +46,12 @@ public class DefaultMealService implements MealService{
     public List<Meal> getMeals(Characteristics characteristics) {
         List<Meal> meals = new ArrayList<>();
         double c = 0;
-        while (meals.size() < 3) {
+        while (meals.size() < 5) {
             c += 0.01;
             meals = mealRepository.find(characteristics.getCalories(), characteristics.getProtein(), characteristics.getFats(),
-                    characteristics.getCarbs(), 0.05 + c*0.01);
+                    characteristics.getCarbs(), 0.05 + c);
         }
+        System.out.println(c);
         return meals;
     }
 }
