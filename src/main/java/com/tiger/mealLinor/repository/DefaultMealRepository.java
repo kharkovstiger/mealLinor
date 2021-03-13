@@ -2,9 +2,11 @@ package com.tiger.mealLinor.repository;
 
 import com.tiger.mealLinor.model.Meal;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Example;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
+import java.util.Optional;
 
 @Repository
 public class DefaultMealRepository implements MealRepository{
@@ -31,5 +33,11 @@ public class DefaultMealRepository implements MealRepository{
         return crudMealRepository.findByCaloriesBetweenAndProteinBetweenAndFatsBetweenAndCarbsBetween(calories*(1-percentage),
                 calories*(1+percentage), protein*(1-percentage), protein*(1+percentage),
                 fats*(1-percentage), fats*(1+percentage), carbs*(1-percentage), carbs*(1+percentage));
+    }
+
+    @Override
+    public Meal findOne(Meal meal) {
+        Example<Meal> example = Example.of(meal);
+        return crudMealRepository.findOne(example).orElse(null);
     }
 }

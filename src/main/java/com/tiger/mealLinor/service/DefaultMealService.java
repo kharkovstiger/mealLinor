@@ -31,10 +31,38 @@ public class DefaultMealService implements MealService{
         List<Course> dinners = courseRepository.findCoursesByType(CourseType.DINNER);
         List<Course> snacks2 = courseRepository.findCoursesByType(CourseType.SNACK_2);
         List<Course> suppers = courseRepository.findCoursesByType(CourseType.SUPPER);
+        List<Course> additions = courseRepository.findCoursesByType(CourseType.ADDITION);
         breakfasts.forEach(b -> snacks.forEach(s -> dinners.forEach(d -> snacks2.forEach(s2 -> suppers.forEach(sup -> {
             Meal meal = new Meal(b, s, d, s2, sup);
-            mealRepository.saveMeal(meal);
+            saveMeal(meal);
+            additions.forEach(a1 -> {
+                Meal meala = new Meal(b, s, d, s2, sup, a1);
+                saveMeal(meala);
+                additions.forEach(a2 -> {
+                    Meal mealaa = new Meal(b, s, d, s2, sup, a2);
+                    saveMeal(mealaa);
+                    additions.forEach(a3 -> {
+                        Meal mealaaa = new Meal(b, s, d, s2, sup, a3);
+                        saveMeal(mealaaa);
+                        additions.forEach(a4 -> {
+                            Meal mealaaaa = new Meal(b, s, d, s2, sup, a4);
+                            saveMeal(mealaaaa);
+                            additions.forEach(a5 -> {
+                                Meal mealaaaaa = new Meal(b, s, d, s2, sup, a5);
+                                saveMeal(mealaaaaa);
+                            });
+                        });
+                    });
+                });
+            });
         })))));
+    }
+
+    private void saveMeal(Meal meal) {
+        Meal existed = mealRepository.findOne(meal);
+        if (existed == null) {
+            mealRepository.saveMeal(meal);
+        }
     }
 
     @Override
@@ -53,5 +81,18 @@ public class DefaultMealService implements MealService{
         }
         System.out.println(c);
         return meals;
+    }
+
+    @Override
+    public boolean test() {
+        List<Course> breakfasts = courseRepository.findCoursesByType(CourseType.BREAKFAST);
+        List<Course> snacks = courseRepository.findCoursesByType(CourseType.SNACK);
+        List<Course> dinners = courseRepository.findCoursesByType(CourseType.DINNER);
+        List<Course> snacks2 = courseRepository.findCoursesByType(CourseType.SNACK_2);
+        List<Course> suppers = courseRepository.findCoursesByType(CourseType.SUPPER);
+        List<Course> additions = courseRepository.findCoursesByType(CourseType.ADDITION);
+        Meal meal = new Meal(breakfasts.get(0), snacks.get(0), dinners.get(0), snacks2.get(0), suppers.get(0));
+        mealRepository.findOne(meal);
+        return false;
     }
 }

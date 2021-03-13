@@ -5,5 +5,6 @@ public enum CourseType {
     SNACK,
     DINNER,
     SNACK_2,
-    SUPPER;
+    SUPPER,
+    ADDITION;
 }
