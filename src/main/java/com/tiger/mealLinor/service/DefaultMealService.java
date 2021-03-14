@@ -34,21 +34,21 @@ public class DefaultMealService implements MealService{
         List<Course> additions = courseRepository.findCoursesByType(CourseType.ADDITION);
         breakfasts.forEach(b -> snacks.forEach(s -> dinners.forEach(d -> snacks2.forEach(s2 -> suppers.forEach(sup -> {
             Meal meal = new Meal(b, s, d, s2, sup);
-            saveMeal(meal);
+//            saveMeal(meal);
             additions.forEach(a1 -> {
                 Meal meala = new Meal(b, s, d, s2, sup, a1);
                 saveMeal(meala);
                 additions.forEach(a2 -> {
-                    Meal mealaa = new Meal(b, s, d, s2, sup, a2);
+                    Meal mealaa = new Meal(b, s, d, s2, sup, a1, a2);
                     saveMeal(mealaa);
                     additions.forEach(a3 -> {
-                        Meal mealaaa = new Meal(b, s, d, s2, sup, a3);
+                        Meal mealaaa = new Meal(b, s, d, s2, sup, a1, a2, a3);
                         saveMeal(mealaaa);
                         additions.forEach(a4 -> {
-                            Meal mealaaaa = new Meal(b, s, d, s2, sup, a4);
+                            Meal mealaaaa = new Meal(b, s, d, s2, sup, a1, a2, a3, a4);
                             saveMeal(mealaaaa);
                             additions.forEach(a5 -> {
-                                Meal mealaaaaa = new Meal(b, s, d, s2, sup, a5);
+                                Meal mealaaaaa = new Meal(b, s, d, s2, sup, a1, a2, a3, a4, a5);
                                 saveMeal(mealaaaaa);
                             });
                         });
@@ -59,10 +59,10 @@ public class DefaultMealService implements MealService{
     }
 
     private void saveMeal(Meal meal) {
-        Meal existed = mealRepository.findOne(meal);
-        if (existed == null) {
+//        Meal existed = mealRepository.findOne(meal);
+//        if (existed == null) {
             mealRepository.saveMeal(meal);
-        }
+//        }
     }
 
     @Override
