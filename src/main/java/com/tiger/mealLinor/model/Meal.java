@@ -5,6 +5,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -36,9 +37,9 @@ public class Meal {
         this.dinner = dinner;
         this.snack2 = snack2;
         this.supper = supper;
-        List<Course> courses = Arrays.asList(breakfast, snack, dinner, snack2, supper);
+        List<Course> courses = new ArrayList<>(Arrays.asList(breakfast, snack, dinner, snack2, supper));
         if (additions.length > 0) {
-            this.additions = Arrays.asList(additions);
+            this.additions = new ArrayList<>(Arrays.asList(additions));
             courses.addAll(this.additions);
         }
         this.calories = courses.stream().mapToDouble(Course::getCalories).sum();

@@ -34,7 +34,7 @@ public class DefaultMealService implements MealService{
         List<Course> additions = courseRepository.findCoursesByType(CourseType.ADDITION);
         breakfasts.forEach(b -> snacks.forEach(s -> dinners.forEach(d -> snacks2.forEach(s2 -> suppers.forEach(sup -> {
             Meal meal = new Meal(b, s, d, s2, sup);
-//            saveMeal(meal);
+            saveMeal(meal);
             additions.forEach(a1 -> {
                 Meal meala = new Meal(b, s, d, s2, sup, a1);
                 saveMeal(meala);
