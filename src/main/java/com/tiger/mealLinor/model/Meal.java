@@ -37,12 +37,13 @@ public class Meal {
         this.snack2 = snack2;
         this.supper = supper;
         List<Course> courses = Arrays.asList(breakfast, snack, dinner, snack2, supper);
+        if (additions.length > 0) {
+            this.additions = Arrays.asList(additions);
+            courses.addAll(this.additions);
+        }
         this.calories = courses.stream().mapToDouble(Course::getCalories).sum();
         this.fats = courses.stream().mapToDouble(Course::getFats).sum();
         this.protein = courses.stream().mapToDouble(Course::getProtein).sum();
         this.carbs = courses.stream().mapToDouble(Course::getCarbs).sum();
-        if (additions.length > 0) {
-            this.additions = Arrays.asList(additions);
-        }
     }
 }
