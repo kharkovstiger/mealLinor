@@ -11,6 +11,4 @@ public interface MealService {
     List<Meal> getAllMeals();
 
     List<Meal> getMeals(Characteristics characteristics);
-
-    boolean test();
 }

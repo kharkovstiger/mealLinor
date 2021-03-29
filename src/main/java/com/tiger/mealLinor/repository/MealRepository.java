@@ -11,5 +11,9 @@ public interface MealRepository {
 
     List<Meal> find(Double calories, Double protein, Double fats, Double carbs, double percentage);
 
+    List<Meal> findAll(Meal meal);
+
     Meal findOne(Meal meal);
+
+    List<Meal> findByMainCourses(Meal meal);
 }

@@ -36,9 +36,4 @@ public class MealController {
     public ResponseEntity getMeals(@RequestBody Characteristics characteristics) {
         return new ResponseEntity(mealService.getMeals(characteristics), HttpStatus.OK);
     }
-
-    @GetMapping(value = "/test")
-    public ResponseEntity test() {
-        return new ResponseEntity(mealService.test(), HttpStatus.OK);
-    }
 }

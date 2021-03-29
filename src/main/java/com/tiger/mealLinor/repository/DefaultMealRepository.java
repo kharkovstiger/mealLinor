@@ -6,7 +6,6 @@ import org.springframework.data.domain.Example;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
-import java.util.Optional;
 
 @Repository
 public class DefaultMealRepository implements MealRepository{
@@ -36,8 +35,22 @@ public class DefaultMealRepository implements MealRepository{
     }
 
     @Override
+    public List<Meal> findAll(Meal meal) {
+        Example<Meal> example = Example.of(meal);
+        return crudMealRepository.findAll(example);
+    }
+
+    @Override
     public Meal findOne(Meal meal) {
         Example<Meal> example = Example.of(meal);
         return crudMealRepository.findOne(example).orElse(null);
+    }
+
+    @Override
+    public List<Meal> findByMainCourses(Meal meal) {
+//        return crudMealRepository.findByMainCourses(meal.getBreakfast().getId(), meal.getSnack().getId(), meal.getDinner().getId(),
+//                meal.getSnack2().getId(), meal.getSupper().getId());
+        return crudMealRepository.findByBreakfastAndSnackAndDinnerAndSnack2AndSupper(meal.getBreakfast(), meal.getSnack(),
+                meal.getDinner(), meal.getSnack2(), meal.getSupper());
     }
 }
